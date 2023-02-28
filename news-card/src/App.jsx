@@ -25,47 +25,51 @@ function App() {
     <div>
       <h1 className="heading">DailyNews</h1>
       <hr />
-      {getNews.map((news) => (
-        <div className="item items--2" key={news.id}>
-          <img
-            src={news.jetpack_featured_media_url}
-            alt=""
-            className="images"
-          />
-          <span>
-            <h3 className="author">
-              {news.parselyMeta["parsely-author"][0]}.
-              <span className="date">
-                {new Date(news.date).getUTCDate()},
-                {new Date(news.date).toString().split(" ")[1].toUpperCase()}
-              </span>
-            </h3>{" "}
-          </span>
-          <div
-            className="section"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(news.parselyMeta["parsely-section"]),
-            }}
-          />
-          <div
-            className="title"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(news.parselyMeta["parsely-title"]),
-            }}
-          />
+      <div className="container">
+        {getNews.map((news) => (
+          <div className="item items--2" key={news.id}>
+            <img
+              src={news.jetpack_featured_media_url}
+              alt=""
+              className="images"
+            />
+            <span>
+              <h3 className="author">
+                {news.parselyMeta["parsely-author"][0]}.
+                <span className="date">
+                  {new Date(news.date).getUTCDate()},
+                  {new Date(news.date).toString().split(" ")[1].toUpperCase()}
+                </span>
+              </h3>{" "}
+            </span>
+            <div
+              className="section"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(news.parselyMeta["parsely-section"]),
+              }}
+            />
+            <div
+              className="title"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(news.parselyMeta["parsely-title"]),
+              }}
+            />
 
-          <div
-            className="main-news"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(news.excerpt.rendered),
-            }}
-          />
-        <a href={news.link} target='_blank'   >Read Full Article...</a>
-          {/* <p>
+            <div
+              className="main-news"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(news.excerpt.rendered),
+              }}
+            />
+            <a href={news.link} target="_blank">
+              Read Full Article...
+            </a>
+            {/* <p>
               dangerouslySetInnerHTML={}
             </p> */}
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
