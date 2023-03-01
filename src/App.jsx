@@ -64,9 +64,7 @@ function App() {
             <a href={news.link} target="_blank">
               Read Full Article...
             </a>
-            {/* <p>
-              dangerouslySetInnerHTML={}
-            </p> */}
+           
           </div>
         ))}
       </div>
